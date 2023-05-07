@@ -1,0 +1,56 @@
+function evaluarFase1(nombre, apellido, departamento, puntajeFundamentos, puntajeImperativa, puntajeOrientada, evidenciaFundamentos, evidenciaImperativa, evidenciaOrientada, promedioIngles, hizoLecciones) {
+
+  // Evaluación de Inglés
+  var estadoIngles = "";
+  if (promedioIngles >= 50) {
+    estadoIngles = "ok";
+  } else {
+    return "Lo siento " + nombre + ", no has aprobado la fase 1 debido a tu puntaje de Inglés insuficiente.";
+  }
+
+  // Evaluación de CT
+  var statusCT = "";
+  if (hizoLecciones) {
+    statusCT = "ok";
+  } else {
+    return "Lo siento " + nombre + ", no has aprobado la fase 1 debido a que no realizaste todas las lecciones de Competencias Transversales.";
+  }
+
+  // Evaluación técnica
+  var puntajeTecnica = (puntajeFundamentos * 0.3) + (puntajeImperativa * 0.5) + (puntajeOrientada * 0.2);
+  var statusTecnica = "";
+  var statusEvidencias = "";
+  var statusFinal = "";
+  if (puntajeTecnica >= 60 && evidenciaFundamentos && evidenciaImperativa && evidenciaOrientada) {
+    statusTecnica = "ok";
+    statusEvidencias = "ok";
+    statusFinal = "aprobado";
+  } else if (puntajeTecnica >= 60 && (evidenciaFundamentos || evidenciaImperativa || evidenciaOrientada)) {
+    statusTecnica = "ok";
+    statusEvidencias = "pendiente";
+    statusFinal = "a examen final";
+  } else if (puntajeTecnica >= 50 && evidenciaFundamentos && evidenciaImperativa && evidenciaOrientada) {
+    statusTecnica = "pendiente";
+    statusEvidencias = "ok";
+    statusFinal = "a examen final";
+  } else {
+    return "Lo siento " + nombre + ", no has aprobado la fase 1 debido a tu puntaje técnico insuficiente y/o la falta de entrega de evidencias.";
+  }
+
+  // Status final
+  var mensaje = "Hola " + nombre + "!!, el detalle de tu status final es:\n\n";
+  mensaje += "En Inglés - " + promedioIngles + " puntos - " + estadoIngles + "\n";
+  mensaje += "En CT - 100 puntos - " + statusCT + "\n";
+  mensaje += "En Técnica - " + puntajeTecnica.toFixed(2) + " puntos - " + statusTecnica + "\n";
+  mensaje += "Evidencias entregadas - " + (evidenciaFundamentos + evidenciaImperativa + evidenciaOrientada) + " - " + statusEvidencias + "\n\n";
+  mensaje += "En conclusión, tu status final es " + statusFinal + ".";
+  if (statusFinal === "a examen final") {
+    mensaje += " Para aprobar el examen final, deberás obtener al menos un 60% en la evaluación supervisada.";
+  }
+
+  return mensaje;
+}
+
+
+
+
