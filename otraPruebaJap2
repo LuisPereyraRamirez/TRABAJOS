@@ -1,28 +1,39 @@
-function calcularEstadoDeFase1(nombre, apellido, departamento, puntajeFundamentos, puntajeImperativa, puntajeOrientada, evidenciaFundamentos, evidenciaImperativa, evidenciaOrientada, promedioIngles, hizoLecciones) {
+function calcularEstadoDeFase1(nombre, apellido, departamento, puntajeFundamentos,
+  puntajeImperativa, puntajeOrientada, evidenciaFundamentos, evidenciaImperativa, 
+  evidenciaOrientada, promedioIngles, hizoLecciones) {
 
-  let estadoFinal = "reprobado";
-  let puntajeTecnica = (puntajeFundamentos * 0.3) + (puntajeImperativa * 0.5) + (puntajeOrientada * 0.2);
-  let entregasEvidencia = evidenciaFundamentos + evidenciaImperativa + evidenciaOrientada;
+ let estadoFinal = "reprobado";
+ let puntajeTecnica = (puntajeFundamentos * 0.3) + (puntajeImperativa * 0.5) + 
+ (puntajeOrientada * 0.2);
+ let entregasEvidencia = evidenciaFundamentos + evidenciaImperativa + evidenciaOrientada;
 
-  // Verificar si cumplió con los requisitos para aprobar fase 1
-  if (promedioIngles >= 50 && hizoLecciones == true) {
+ // Verificar si cumplió con los requisitos para aprobar fase 1
+ if (promedioIngles >= 50 && hizoLecciones == true) {
 
-    // Verificar si aprueba directamente o necesita rendir examen final con supervisión
-    if (puntajeTecnica >= 60 && entregasEvidencia == 3) {
-      estadoFinal = "aprobado con " + puntajeTecnica;
-    } else if (puntajeTecnica >= 60 && entregasEvidencia < 3) {
-      estadoFinal = "deberá rendir examen final con supervisión para aprobar";
-    } else if (puntajeTecnica >= 50 && entregasEvidencia == 3) {
-      estadoFinal = "deberá rendir examen final con supervisión para aprobar";
-    }
+   // Verificar si aprueba directamente o necesita rendir examen final con supervisión
+   if (puntajeTecnica >= 60 && entregasEvidencia == 3) {
+     estadoFinal = "aprobado con " + puntajeTecnica;
+   } else if (puntajeTecnica >= 60 && entregasEvidencia < 3) {
+     estadoFinal = "deberá rendir examen final con supervisión para aprobar";
+   } else if (puntajeTecnica >= 50 && entregasEvidencia == 3) {
+     estadoFinal = "deberá rendir examen final con supervisión para aprobar";
+   }
 
-  }
+ }
 
-  // Mostrar mensaje final
-  console.log("Hola " + nombre + apellido + "!! El detalle de tu estado final es:");
-  console.log("En Inglés - " + promedioIngles + " puntos - " + (promedioIngles >= 50 ? "ok" : "reprobado"));
-  console.log("En CT - " + (hizoLecciones ? "100" : "0") + " puntos - " + (hizoLecciones ? "ok" : "reprobado"));
-  console.log("En Técnica - " + puntajeTecnica + " puntos - " + (puntajeTecnica >= 50 ? "ok" : "reprobado"));
-  console.log("Evidencias entregadas - " + entregasEvidencia + " - " + (entregasEvidencia == 3 ? "ok" : "reprobado"));
-  console.log("En conclusión, tu status final es " + estadoFinal + ".");
+ // Mostrar mensaje final
+ console.log("Hola " + nombre + " " + apellido + "!! El detalle de tu estado final es:");
+ console.log("En Inglés - " + promedioIngles + " puntos - " + (promedioIngles >= 50 ? "ok" : "reprobado"));
+ console.log("En CT - " + (hizoLecciones ? "100" : "0") + " puntos - " + (hizoLecciones ? "ok" : "reprobado"));
+ console.log("En Técnica - " + puntajeTecnica + " puntos - " + (puntajeTecnica >= 50 ? "ok" : "reprobado"));
+ console.log("Evidencias entregadas - " + entregasEvidencia + " - " + (entregasEvidencia == 3 ? "ok" : "reprobado"));
+ console.log("En conclusión, tu status final es " + estadoFinal + ".");
 }
+
+calcularEstadoDeFase1("Andres", "Arriola", "Montevideo", 100,
+  100, 100, 3, 3, 
+  3, 10, 100)
+
+  calcularEstadoDeFase1("Luis", "Pereyra", "Montevideo", 100,
+  100, 100, 3, 3, 
+  3, 10, 100)
